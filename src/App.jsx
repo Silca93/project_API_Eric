@@ -24,13 +24,7 @@
     const [tasksSearch, setTasksSearch] = useState(text); 
     
 
-  // useEffect(() => {
-  //   setTasksSearch(
-  //     country.filter((country) =>
-  //       country.toLowerCase().includes(searchVal.toLowerCase())
-  //     )
-  //   );
-  // }, [searchVal]); 
+   
   const filteredCountries = country.filter(country =>
     country.name.common.toLowerCase().includes(searchVal.toLowerCase())
 );

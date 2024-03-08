@@ -12,19 +12,19 @@ export default function Body() {
 
             <div className="w-[35rem] h-[4rem] bg-white flex items-center gap-4 pl-5 ml-[6rem]  border-black shadow-lg">
                 <img src={search} alt="" width="20px"/>
-                <input onChange={(e) => setSearchVal(e.target.value)} type="text" placeholder='Search a country' />
+                <input className="h-full w-full" onChange={(e) => setSearchVal(e.target.value)} type="text" placeholder='Search a country' />
             </div>
             <div className="w-[10rem] h-[4rem] bg-white pr-5 flex justify-center items-center shadow-lg mr-[6rem]">
-            <details className="dropdown">
-                <summary className="m-1 btn">Filter by region</summary>
-                <ul className="p-2 dropdown-content bg-white  ">
+            {/* <details className="dropdown"> */}
+                <div className="">Filter by region</div>
+                {/* <ul className="p-2 dropdown-content bg-white  ">
                     <li><a>Africa</a></li>
                     <li><a>America</a></li>
                     <li><a>Asia</a></li>
                     <li><a>Europe</a></li>
                     <li><a>Oceania</a></li>
                 </ul>
-            </details>
+            </details> */}
                 
             </div>
         </div>

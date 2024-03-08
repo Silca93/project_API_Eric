@@ -27,7 +27,7 @@ export default function Details() {
               <div className="w-[7rem] h-[2rem] flex gap-4 bg-white border-2 shadow-xl absolute left-[80px] top-12 justify-center items-center">
                  <img src={back} alt=""  width="15px"/> 
        
-                  <Link to="/project_API_Eric"><button>BACK</button></Link> 
+                  <Link to="/project_API_Eric/"><button>BACK</button></Link> 
               </div>
               
               {/* {flagId.name.common} */}
@@ -45,7 +45,7 @@ export default function Details() {
                   <p className="font-medium">Region:&nbsp; {countryId.region}</p>
                   <p className="font-medium">Sub Region:&nbsp;{countryId.subregion} </p>
                   <p className="font-medium">Capital:&nbsp;{countryId.capital} </p>
-                    <p className="font-medium pt-[5rem]">Border Countries:&nbsp;{Object.values(countryId.borders).join(', ')}
+                  <p className="font-medium pt-[5rem]">Border Countries:&nbsp;{Object.values(countryId.borders).join(', ')}
                      {/* {countryId.borders.map((border, index) => (
                       <span key={index} className="font-medium px-2">{border}</span>
                     ))} */}

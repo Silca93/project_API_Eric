@@ -11,6 +11,11 @@ export default function Card() {
   const {id=0} = useParams();
   const flagId = country[id]
 
+  const chercherIndex = (element) => {
+    const i = country.findIndex((x) => x.name.common === element.name.common);
+    return i;
+  };
+
   
   const BASE_URL = ('https://restcountries.com/v3.1/all')
 
@@ -33,7 +38,7 @@ export default function Card() {
     <>
         {filteredCountries.map((element, index ) => {
             return (
-              <Link index={index} to={`/Details/${index}`}>
+              <Link index={index} to={`/Details/${chercherIndex(element)}`}>
               <div className="w-[24rem] h-[30rem] bg-white flex flex-col">
                 <div className="flag w-full h-[45%]  overflow-hidden flex justify-center items-center">
                     <img src={element.flags.png} alt="" height="100%" width="100%"/>
