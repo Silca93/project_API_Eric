@@ -46,7 +46,7 @@
 
     const router = createBrowserRouter([
       {
-        path:"/",
+        path:"/project_API_Eric",
         element: <Home/>,
         errorElement: Error(),
         // children: [

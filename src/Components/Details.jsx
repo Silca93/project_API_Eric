@@ -26,7 +26,8 @@ export default function Details() {
             <div className="left w-1/2 h-dvh flex flex-col items-center justify-center relative">
               <div className="w-[7rem] h-[2rem] flex gap-4 bg-white border-2 shadow-xl absolute left-[80px] top-12 justify-center items-center">
                  <img src={back} alt=""  width="15px"/> 
-                  <Link to="/"><button>BACK</button></Link> 
+       
+                  <Link to="/project_API_Eric"><button>BACK</button></Link> 
               </div>
               
               {/* {flagId.name.common} */}
