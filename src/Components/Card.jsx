@@ -33,19 +33,21 @@ export default function Card() {
     <>
         {filteredCountries.map((element, index ) => {
             return (
-                <div className="w-[24rem] h-[30rem] bg-white flex flex-col">
+              <Link index={index} to={`/Details/${index}`}>
+              <div className="w-[24rem] h-[30rem] bg-white flex flex-col">
                 <div className="flag w-full h-[45%]  overflow-hidden flex justify-center items-center">
                     <img src={element.flags.png} alt="" height="100%" width="100%"/>
                 </div>
+                
                 <div className="info w-full h-[55%] pt-5 pl-4">
                     <h1 index={index} className="pt-4 text-[1.3rem] font-bold">{element.name.common}</h1>
                     {/* <Link to={`/${index}`}><p><strong>Population:</strong>&nbsp;{element.population}</p></Link> */}
-                    <Link index={index} to={`/Details/${index}`}><p><strong>Population:</strong>&nbsp;{element.population}</p></Link>
+                    <p><strong>Population:</strong>&nbsp;{element.population}</p>
                     <p><strong>Region:</strong>&nbsp;{element.region}</p>
                     <p><strong>Capital:</strong>&nbsp;{element.capital}</p>
-                </div>
-        
-            </div>
+                 </div>
+              </div>
+            </Link>
             )
         })}
  
