@@ -22,7 +22,7 @@ export default function Home() {
        
         <Header/>
         <Body/>
-        {/* <Details/> */}
+        
 
     </div>
   )

@@ -18,25 +18,36 @@
   function App() {
 
     const [country, setCountry] = useState([]);
-
+//! filtering search bar//
     const [text, setText] = useState(country);
     const [searchVal, setSearchVal] = useState("");
-    const [tasksSearch, setTasksSearch] = useState(text); 
     
-
    
-  const filteredCountries = country.filter(country =>
+    const filteredCountries = country.filter(country =>
     country.name.common.toLowerCase().includes(searchVal.toLowerCase())
 );
+ //! filtering by continets - asia//
+  const asianCountries = country.filter(country => country.region === "Asia")
 
+  const asianCountryNames = asianCountries.map(country => country.name);
+  // console.log(asianCountryNames);
+
+
+  //! dark mode //
+  const [mode, setMode] = useState(false);
+
+  const switchMode = () => {
+    setMode(!mode)
+    console.log(mode);
+  }
+  
+
+  // not found error//
     const Error = () => {
       return <h1>404 Not Found</h1>
     }
 
     const BASE_URL = ('https://restcountries.com/v3.1/all')
-    
- 
-
 
     const router = createBrowserRouter([
       {
@@ -50,7 +61,6 @@
         //     errorElement: Error()
         //   }
         // ]
-          
         
       },
       {
@@ -61,9 +71,9 @@
     ])
 
     return (
-      <Context.Provider value={{country, setCountry, search, back, moon, text, setText, searchVal, setSearchVal, tasksSearch, setTasksSearch, filteredCountries}}>
+      <Context.Provider value={{country, setCountry, search, back, moon, text, setText, searchVal, setSearchVal, filteredCountries, asianCountryNames, mode, setMode, switchMode}}>
 
-        <div className="main w-dvw h-dvh bg-[hsl(0, 0%, 100%)]">
+        <div className="main w-dvw h-dvh bg-gray-100">
           <RouterProvider router = {router}/>
                   
         </div>

@@ -7,13 +7,13 @@ import { useParams } from 'react-router-dom'
 
 export default function Card() {
 
-  const {country, setCountry, text, setText, searchVal, setSearchVal, tasksSearch, setTasksSearch, filteredCountries } = useContext(Context)
+  const {country, setCountry, mode, filteredCountries } = useContext(Context)
   const {id=0} = useParams();
   const flagId = country[id]
 
-  const chercherIndex = (element) => {
-    const i = country.findIndex((x) => x.name.common === element.name.common);
-    return i;
+  const searchIndex = (element) => {
+    const result = country.findIndex((x) => x.name.common === element.name.common);
+    return result;
   };
 
   
@@ -38,18 +38,18 @@ export default function Card() {
     <>
         {filteredCountries.map((element, index ) => {
             return (
-              <Link index={index} to={`/Details/${chercherIndex(element)}`}>
-              <div className="w-[24rem] h-[30rem] bg-white flex flex-col">
-                <div className="flag w-full h-[45%]  overflow-hidden flex justify-center items-center">
-                    <img src={element.flags.png} alt="" height="100%" width="100%"/>
+              <Link index={index} to={`/Details/${searchIndex(element)}`}>
+              <div className={!mode? "w-[24rem] h-[27rem] bg-[#fffefe] flex flex-col rounded-t-lg rounded-b-lg mb-[2rem]" : "w-[24rem] h-[27rem] bg-[#2b3642] flex flex-col text-white rounded-t-lg rounded-b-lg mb-[2rem]"}>
+                <div className="flag w-full h-[45%]  overflow-y-hidden flex relative justify-center items-center rounded-t-lg">
+                    <img className="" src={element.flags.png} alt="" height="100%" width="400px"/>
                 </div>
                 
                 <div className="info w-full h-[55%] pt-5 pl-4">
-                    <h1 index={index} className="pt-4 text-[1.3rem] font-bold">{element.name.common}</h1>
+                    <h1 index={index} className="pt-4 pb-2 text-[1.3rem] font-bold ">{element.name.common}</h1>
                     {/* <Link to={`/${index}`}><p><strong>Population:</strong>&nbsp;{element.population}</p></Link> */}
-                    <p><strong>Population:</strong>&nbsp;{element.population}</p>
-                    <p><strong>Region:</strong>&nbsp;{element.region}</p>
-                    <p><strong>Capital:</strong>&nbsp;{element.capital}</p>
+                    <p className="py-1"><strong>Population:</strong>&nbsp;{element.population}</ p>
+                    <p className="py-1"><strong>Region:</strong>&nbsp;{element.region}</ p>
+                    <p className="py-1"><strong>Capital:</strong>&nbsp;{element.capital}</p>
                  </div>
               </div>
             </Link>
