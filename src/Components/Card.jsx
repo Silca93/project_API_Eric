@@ -48,7 +48,7 @@ export default function Card() {
                 <div className="info w-full h-[55%] pt-5 pl-4">
                     <h1 index={index} className="pt-4 pb-2 text-[1.3rem] font-bold ">{element.name.common}</h1>
                     {/* <Link to={`/${index}`}><p><strong>Population:</strong>&nbsp;{element.population}</p></Link> */}
-                    <p className="py-1"><strong>Population:</strong>&nbsp;{element.population}</ p>
+                    <p className="py-1"><strong>Population:</strong>&nbsp;{element.population.toLocaleString()}</ p>
                     <p className="py-1"><strong>Region:</strong>&nbsp;{element.region}</ p>
                     <p className="py-1"><strong>Capital:</strong>&nbsp;{element.capital}</p>
                  </div>

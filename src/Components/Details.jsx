@@ -31,7 +31,7 @@ export default function Details() {
               <div className="flex gap-2 w-full justify-between items-start max-[1200px]:flex-col max-[1200px]:justify-center  max-[970px]:items-center">
                 <div className="left flex-flex-col gap-2 pl-[50px]  max-[970px]:pl-0">
                   <p className="font"><strong>Native Name:</strong>&nbsp; {Object.values(countryId.name.nativeName)[0].official} </p>
-                  <p className="font"><strong>Population:</strong>&nbsp;{countryId.population}</p>
+                  <p className="font"><strong>Population:</strong>&nbsp;{countryId.population.toLocaleString()}</p>
                   <p className="font"><strong>Region:</strong>&nbsp; {countryId.region}</p>
                   <p className="font"><strong>Sub Region:</strong>&nbsp;{countryId.subregion} </p>
                   <p className="font"><strong>Capital:</strong>&nbsp;{countryId.capital} </p>
@@ -50,7 +50,7 @@ export default function Details() {
                 <div className="right flex flex-col gap-2 mt-0 pr-[150px] max-[1200px]:pl-[50px]  max-[970px]:pl-[50px]  max-[970px]:pr-[50px] max-[970px]:justify-center max-[550px]:pl-[10px]">
                   <p className="font"><strong>Top level Domain:</strong>&nbsp; {countryId.tld}</p>
                   <p className="font"><strong>Currencies:</strong>&nbsp;{Object.values(countryId.currencies)[0].name}</p>
-                  <p className="font"><strong>Languages:</strong>&nbsp;{Object.values(countryId.languages)[0]}</p>
+                  <p className="font"><strong>Languages:</strong>&nbsp;{Object.values(countryId.languages).join(", ")}</p>
                 </div>
               </div>
             </div>
