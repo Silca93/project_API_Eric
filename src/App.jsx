@@ -1,8 +1,8 @@
   import { useState, useRef, useEffect } from 'react'
   import React from 'react'
 
-  import Card from './Components/Card'
-  import { Route,  RouterProvider, createBrowserRouter, createRoutesFromElements, Link, useRouteError } from "react-router-dom"
+  
+  import { RouterProvider, createBrowserRouter} from "react-router-dom"
 
   import Home from './Home'
   import Details from './Components/Details'
@@ -10,7 +10,9 @@
   //?images//
   import search from './assets/logos/search-solid.svg'
   import back from './assets/logos/arrow-left-solid.svg'
-  import moon from './assets/logos/moon-regular.svg'
+  import moon from './assets/logos/moon-solid.svg'
+  import sun from './assets/logos/sun-solid.svg'
+  import down from './assets/logos/down-solid.svg'
 
 
   export const Context = React.createContext()
@@ -18,19 +20,74 @@
   function App() {
 
     const [country, setCountry] = useState([]);
-//! filtering search bar//
-    const [text, setText] = useState(country);
-    const [searchVal, setSearchVal] = useState("");
     
+//! filtering search bar//
    
-    const filteredCountries = country.filter(country =>
-    country.name.common.toLowerCase().includes(searchVal.toLowerCase())
-);
- //! filtering by continets - asia//
-  const asianCountries = country.filter(country => country.region === "Asia")
+    const [searchVal, setSearchVal] = useState("");
+  
+    const [filteredCountries, setFilteredCountries] = useState(country);
+    
+    const filterBySearch = () => {
+      const filteredBySearch = country.filter(country =>
+        country.name.common.toLowerCase().includes(searchVal.toLowerCase())
+      );
+      setFilteredCountries(filteredBySearch);
+    };
 
-  const asianCountryNames = asianCountries.map(country => country.name);
-  // console.log(asianCountryNames);
+   
+
+ //! filtering by continents //
+ const filterByAsia = () => {
+
+   const asianCountries = country.filter(country => country.region === "Asia");
+ 
+   setFilteredCountries(asianCountries);
+
+   console.log("filtering Asia:");
+ }
+
+
+const filterByOceania= () => {
+
+  const oceanianCountries = country.filter(country => country.region === "Oceania");
+
+  setFilteredCountries(oceanianCountries);
+
+  console.log("filtering oceania");
+}
+
+
+const filterByEurope= () => {
+
+  const europeanCountries = country.filter(country => country.region === "Europe");
+
+  setFilteredCountries(europeanCountries);
+
+  console.log("filtering europe");
+}
+
+
+
+const filterByAmericas = () => {
+
+  const americanCountries = country.filter(country => country.region === "Americas");
+
+  setFilteredCountries(americanCountries);
+
+  console.log("filtering america");
+}
+
+
+
+const filterByAfrica = () => {
+
+  const africanCountries = country.filter(country => country.region === "Africa");
+
+  setFilteredCountries(africanCountries);
+
+  console.log("filtering africa");
+}
+
 
 
   //! dark mode //
@@ -42,16 +99,15 @@
   }
   
 
-  // not found error//
+  //! not found error//
     const Error = () => {
       return <h1>404 Not Found</h1>
     }
 
-    const BASE_URL = ('https://restcountries.com/v3.1/all')
-
+    
     const router = createBrowserRouter([
       {
-        path:"/project_API_Eric",
+        path:"/project_API_Eric/",
         element: <Home/>,
         errorElement: Error(),
         // children: [
@@ -71,7 +127,7 @@
     ])
 
     return (
-      <Context.Provider value={{country, setCountry, search, back, moon, text, setText, searchVal, setSearchVal, filteredCountries, asianCountryNames, mode, setMode, switchMode}}>
+      <Context.Provider value={{country, filteredCountries, setFilteredCountries, filterByAsia, filterByOceania, filterByEurope, filterByAmericas, filterByAfrica, setCountry, filterBySearch, search, back, moon,  searchVal, setSearchVal, filteredCountries, mode, sun, down, setMode, switchMode}}>
 
         <div className="main w-dvw h-dvh bg-gray-100">
           <RouterProvider router = {router}/>

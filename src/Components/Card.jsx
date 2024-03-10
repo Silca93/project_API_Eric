@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 
 export default function Card() {
 
-  const {country, setCountry, mode, filteredCountries } = useContext(Context)
+  const {country, setCountry, mode, setFilteredCountries, filteredCountries  } = useContext(Context)
   const {id=0} = useParams();
   const flagId = country[id]
 
@@ -26,6 +26,7 @@ export default function Card() {
          const response = await fetch(BASE_URL);
          const json = await response.json();
          setCountry(json)
+         setFilteredCountries(json)
        }catch (error) {
            console.error('Error catching data', error)
        }
@@ -38,8 +39,8 @@ export default function Card() {
     <>
         {filteredCountries.map((element, index ) => {
             return (
-              <Link index={index} to={`/Details/${searchIndex(element)}`}>
-              <div className={!mode? "w-[24rem] h-[27rem] bg-[#fffefe] flex flex-col rounded-t-lg rounded-b-lg mb-[2rem]" : "w-[24rem] h-[27rem] bg-[#2b3642] flex flex-col text-white rounded-t-lg rounded-b-lg mb-[2rem]"}>
+              <Link key={index} to={`/Details/${searchIndex(element)}`}>
+              <div className={!mode? "w-[24rem] h-[27rem] bg-[#fcfcfc] flex flex-col rounded-t-lg rounded-b-lg mb-[2rem]" : "w-[24rem] h-[27rem] bg-[#2b3642] flex flex-col text-white rounded-t-lg rounded-b-lg mb-[2rem]"}>
                 <div className="flag w-full h-[45%]  overflow-y-hidden flex relative justify-center items-center rounded-t-lg">
                     <img className="" src={element.flags.png} alt="" height="100%" width="400px"/>
                 </div>
