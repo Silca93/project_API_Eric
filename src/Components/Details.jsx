@@ -6,7 +6,7 @@ import { Context } from '../App'
 import { Link } from 'react-router-dom'
 
 export default function Details() {
-  const {country, back, text, setText, searchVal, setSearchVal, tasksSearch, setTasksSearch, mode} = useContext(Context);
+  const {country, back, mode} = useContext(Context);
   
   const {id=0} = useParams();
   const countryId = country[id];
